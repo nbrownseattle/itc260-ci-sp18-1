@@ -14,7 +14,7 @@ class News extends CI_Controller {
      {
         $data['news'] = $this->news_model->get_news();
         //$data['title'] = 'News archive';
-        $this->config->set_item('title','News Title');
+        $this->config->set_item('title','News Title Page'); //changed
         $this->load->view('news/index', $data);  
      }//end of index
 
@@ -27,7 +27,8 @@ class News extends CI_Controller {
                     show_404();
             }
 
-            $data['title'] = $data['news_item']['title'];
+            //$data['title'] = $data['news_item']['title'];
+            $this->config->set_item('title','News Article Page'); //changed
             $this->load->view('news/view', $data);
     }//end of view
     
@@ -37,7 +38,7 @@ class News extends CI_Controller {
         $this->load->library('form_validation');
 
         $data['title'] = 'Create a news item';
-
+        $this->config->set_item('title','Create News Page'); 
         $this->form_validation->set_rules('title', 'Title', 'required');
         $this->form_validation->set_rules('text', 'Text', 'required');
 
